@@ -62,7 +62,7 @@ public CreateSuite(suiteid, caseid)
     
     ThisTestSuite = PawnTest_InitSuite("SampleTestSuite");
     
-    return  PawnTest_Assert(PawnTest_errno == PAWNTEST_NOERROR, "Error while initializing")
+    return  PawnTest_AssertEx(PawnTest_errno == PAWNTEST_NOERROR, "Error while initializing")
             ? PAWNTEST_CASE_PASSED
             : PAWNTEST_SUITE_FAILED;
 }
@@ -71,9 +71,9 @@ public InvalidIdDestroySuite(suiteid, caseid)
 {
     new bool:ok = true;
     
-    ok &= PawnTest_Assert( !PawnTest_DestroySuite(-1), "Did not fail when suiteid = -1" );
-    ok &= PawnTest_Assert( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES), "Did not fail when suiteid = max" );
-    ok &= PawnTest_Assert( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES+1), "Did not fail when suiteid = max+1" );
+    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(-1), "Did not fail when suiteid = -1" );
+    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES), "Did not fail when suiteid = max" );
+    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES+1), "Did not fail when suiteid = max+1" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;
 }
@@ -83,9 +83,9 @@ public InvalidIdGetSuiteName(suiteid, caseid)
     new bool:ok = true;
     new name[10] = "foo";
     
-    ok &= PawnTest_Assert( !PawnTest_GetSuiteName(-1, name), "Did not fail when suiteid = -1" );
-    ok &= PawnTest_Assert( !PawnTest_GetSuiteName(PAWNTEST_MAX_SUITES, name), "Did not fail when suiteid = max" );
-    ok &= PawnTest_Assert( !PawnTest_GetSuiteName(PAWNTEST_MAX_SUITES+1, name), "Did not fail when suiteid = max+1" );
+    ok &= PawnTest_AssertEx( !PawnTest_GetSuiteName(-1, name), "Did not fail when suiteid = -1" );
+    ok &= PawnTest_AssertEx( !PawnTest_GetSuiteName(PAWNTEST_MAX_SUITES, name), "Did not fail when suiteid = max" );
+    ok &= PawnTest_AssertEx( !PawnTest_GetSuiteName(PAWNTEST_MAX_SUITES+1, name), "Did not fail when suiteid = max+1" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;
 }
@@ -94,9 +94,9 @@ public InvalidIdSetSuiteName(suiteid, caseid)
 {
     new bool:ok = true;
     
-    ok &= PawnTest_Assert( !PawnTest_DestroySuite(-1), "Did not fail when suiteid = -1" );
-    ok &= PawnTest_Assert( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES), "Did not fail when suiteid = max" );
-    ok &= PawnTest_Assert( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES+1), "Did not fail when suiteid = max+1" );
+    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(-1), "Did not fail when suiteid = -1" );
+    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES), "Did not fail when suiteid = max" );
+    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES+1), "Did not fail when suiteid = max+1" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;
 }
@@ -108,7 +108,7 @@ public CheckSuiteName(suiteid, caseid)
     
     PawnTest_GetSuiteName(ThisTestSuite, buf, PAWNTEST_MAX_SUITE_NAME);
         
-    ok = PawnTest_Assert( !strcmp(buf, "SampleTestSuite"), "suite name != initialized name" );
+    ok = PawnTest_AssertEx( !strcmp(buf, "SampleTestSuite"), "suite name != initialized name" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;
 }
@@ -122,7 +122,7 @@ public ChangeSuiteName(suiteid, caseid)
     buf[0] = '\0';
     PawnTest_GetSuiteName(ThisTestSuite, buf);
     
-    ok = PawnTest_Assert( !strcmp(buf, "foofoobarbar"), "suite name != foofoobarbar" );
+    ok = PawnTest_AssertEx( !strcmp(buf, "foofoobarbar"), "suite name != foofoobarbar" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;
 }
@@ -136,8 +136,8 @@ public ChangeSuiteName_BufferTest(suiteid, caseid)
     PawnTest_GetSuiteName(ThisTestSuite, buf1);
     PawnTest_GetSuiteName(ThisTestSuite, buf2);
         
-    ok &= PawnTest_Assert( buf1[0] == '\0', "buf2[0] != '\\0' (small buffer)" );
-    ok &= PawnTest_Assert( !strcmp(buf2, "barfoobarfoo"), "buf3 != barfoobarfoo" );
+    ok &= PawnTest_AssertEx( buf1[0] == '\0', "buf2[0] != '\\0' (small buffer)" );
+    ok &= PawnTest_AssertEx( !strcmp(buf2, "barfoobarfoo"), "buf3 != barfoobarfoo" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;
 }
@@ -149,21 +149,21 @@ public DestroySuite(suiteid, caseid)
     new name[PAWNTEST_MAX_SUITE_NAME];
     
     ret = PawnTest_DestroySuite(ThisTestSuite); // destroy the test suite
-    ok &= PawnTest_Assert( ret == true, "Error after destroying suite" );
+    ok &= PawnTest_AssertEx( ret == true, "Error after destroying suite" );
     
     PawnTest_errno = PAWNTEST_NOERROR;
     PawnTest_GetSuiteName(ThisTestSuite, name);
-    ok &= PawnTest_Assert(  PawnTest_errno == PAWNTEST_OBJ_NOT_INITIALIZED,
+    ok &= PawnTest_AssertEx(  PawnTest_errno == PAWNTEST_OBJ_NOT_INITIALIZED,
                             "No error after getting the name of destroyed suite" );
 
     PawnTest_errno = PAWNTEST_NOERROR;
     PawnTest_SetSuiteName(ThisTestSuite, "foobarfoo");
-    ok &= PawnTest_Assert(  PawnTest_errno == PAWNTEST_OBJ_NOT_INITIALIZED,
+    ok &= PawnTest_AssertEx(  PawnTest_errno == PAWNTEST_OBJ_NOT_INITIALIZED,
                             "No error after setting the name of destroyed suite" );
 
     PawnTest_errno = PAWNTEST_NOERROR;
     PawnTest_DestroySuite(ThisTestSuite);
-    ok &= PawnTest_Assert(  PawnTest_errno == PAWNTEST_OBJ_NOT_INITIALIZED,
+    ok &= PawnTest_AssertEx(  PawnTest_errno == PAWNTEST_OBJ_NOT_INITIALIZED,
                             "No error after re-destroying a destroyed suite" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;

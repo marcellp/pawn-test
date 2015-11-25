@@ -59,8 +59,8 @@ stock bool:PawnTest_DestroySuite(suiteid)
         PawnTest_errno = PAWNTEST_OBJ_NOT_INITIALIZED;
         return false;
     }
-
-    _PawnTest_ClearSuite(suiteid );
+    
+    _PawnTest_ClearSuite(suiteid);
     return true;
 }
 

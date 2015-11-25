@@ -9,17 +9,17 @@
  *
  */
  
-#define PAWNTEST_ASSERT_EQ(%1,%2,%3) PawnTest_Assert(%1 == %2, %3 " (==)")
-#define PAWNTEST_ASSERT_NQ(%1,%2,%3) PawnTest_Assert(%1 != %2, %3 " (!=)")
-#define PAWNTEST_ASSERT_LT(%1,%2,%3) PawnTest_Assert(%1 < %2, %3 " (<)")
-#define PAWNTEST_ASSERT_LE(%1,%2,%3) PawnTest_Assert(%1 <= %2, %3 " (<=)")
-#define PAWNTEST_ASSERT_GT(%1,%2,%3) PawnTest_Assert(%1 > %2, %3 " (>)")
-#define PAWNTEST_ASSERT_GE(%1,%2,%3) PawnTest_Assert(%1 >= %2, %3 " (>=)")
+#define PAWNTEST_ASSERT_EQ(%1,%2,%3) PawnTest_AssertEx(%1 == %2, %3 " (==)")
+#define PAWNTEST_ASSERT_NQ(%1,%2,%3) PawnTest_AssertEx(%1 != %2, %3 " (!=)")
+#define PAWNTEST_ASSERT_LT(%1,%2,%3) PawnTest_AssertEx(%1 < %2, %3 " (<)")
+#define PAWNTEST_ASSERT_LE(%1,%2,%3) PawnTest_AssertEx(%1 <= %2, %3 " (<=)")
+#define PAWNTEST_ASSERT_GT(%1,%2,%3) PawnTest_AssertEx(%1 > %2, %3 " (>)")
+#define PAWNTEST_ASSERT_GE(%1,%2,%3) PawnTest_AssertEx(%1 >= %2, %3 " (>=)")
 
-#define PAWNTEST_ASSERT_STR_EQ(%1,%2,%3) PawnTest_Assert( !strcmp(%1, %2), %3 " (string eq)")
+#define PAWNTEST_ASSERT_STR_EQ(%1,%2,%3) PawnTest_AssertEx( !strcmp(%1, %2), %3 " (string eq)")
 
-#define PAWNTEST_ASSERT_TRUE(%1,%2) PawnTest_Assert(%1 == true, %2 " (true)")
-#define PAWNTEST_ASSERT_FALSE(%1,%2) PawnTest_Assert(%1 == false, %2 " (false)")
+#define PAWNTEST_ASSERT_TRUE(%1,%2) PawnTest_AssertEx(%1 == true, %2 " (true)")
+#define PAWNTEST_ASSERT_FALSE(%1,%2) PawnTest_AssertEx(%1 == false, %2 " (false)")
 
 /**
     <summary>
@@ -28,7 +28,7 @@
         if that difference is less than or equal to 2^-11.
     </summary>
 */
-#define PAWNTEST_ASSERT_AEQ(%1,%2,%3) PawnTest_Assert( floatabs(%1-%2) < floatpower(2,-11), %3 " (almost eq)" )
+#define PAWNTEST_ASSERT_AEQ(%1,%2,%3) PawnTest_AssertEx( floatabs(%1-%2) < floatpower(2,-11), %3 " (almost eq)" )
 
 /**
     <summary>
@@ -37,11 +37,11 @@
         that difference is less than or equal to the delta value supplied by the user.
     </summary>
 */
-#define PAWNTEST_ASSERT_AEQ_D(%1,%2,%3,%4) PawnTest_Assert( floatabs(%1-%2) < %3, %4 " (almost eq, custom d)" )
+#define PAWNTEST_ASSERT_AEQ_D(%1,%2,%3,%4) PawnTest_AssertEx( floatabs(%1-%2) < %3, %4 " (almost eq, custom d)" )
 
 /**
     <summary>
-        Evaulates a boolean condition that should be true
+        Evaluates a boolean condition that should be true
         when the function is called.
     </summary>
 
@@ -52,19 +52,56 @@
     <param name="message[]">
         The message to be displayed if the assertion fails.
     </param>
+
+    <param name="return_if_false">
+        If the condition evaluates to false, this value will be returned.
+    </param>
+    
+    <param name="return_if_true">
+        If the condition evaluates to true, this value will be returned.
+    </param>
     
     <returns>
-        True if the passed boolean value is true, false otherwise.
-        Fail the test if expression is false.
+        return_if_true if the passed boolean value is true, return_if_false otherwise.
     </returns>
 */
-stock bool:PawnTest_Assert(condition, message[])
+stock PawnTest_Assert(condition, message[], return_if_false = PAWNTEST_CASE_FAILED, return_if_true = PAWNTEST_CASE_PASSED)
 {
+    // Convert integer to boolean in case the function returns an int instead of a bool.
+    if( !(!!condition) ) {
+        printf("\t\tassertion \"%s\" failed.", message );
+        return return_if_false;
+    }
+    
+    return return_if_true;
+}
+
+/**
+    <summary>
+        Evaluates a boolean condition that should be true
+        when the function is called.
+    </summary>
+
+    <param name="condition">
+        The condition to be evaulated.
+    </param>
+    
+    <param name="message[]">
+        The message to be displayed if the assertion fails.
+    </param>
+
+    <returns>
+        True if the passed boolean value is true, false otherwise.
+    </returns>
+*/
+stock bool:PawnTest_AssertEx(condition, message[])
+{    
     // Convert integer to boolean in case the function returns an int instead of a bool.
     if( !(!!condition) ) {
         printf("\t\tassertion \"%s\" failed.", message );
         return false;
     }
+    
     return true;
 }
 

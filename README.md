@@ -23,7 +23,7 @@ Including pawn-test
 -------------------
 
 To use pawn-test in a PAWN project, copy the `src` directory into your project's
-`pawn/include` directory. Rename the directory to `pawn-test`.
+`pawno/include` directory. Rename the directory to `pawn-test`.
 
 To run pawn-test with the default configuration, simply include the bootstrapper in
 your project:
@@ -82,25 +82,25 @@ that's *server_log.txt*. The Windows version prints everything to the server win
 
 pawn-test produces the following output if a test suite passes:
 
-    [==========]	running test suite "Test suite API test" w/ 8 test case(s)...
-    [----------]	the test environment was successfully set up.
-    [ RUN      ]	test "CreateSuite" (12%)
-    [       OK ]	test "CreateSuite" (0 ms, 0.001 s in total).
-    [ RUN      ]	test "InvalidIdDestroySuite" (25%)
-    [       OK ]	test "InvalidIdDestroySuite" (0 ms, 0.002 s in total).
-    [ RUN      ]	test "InvalidIdGetSuiteName" (37%)
-    [       OK ]	test "InvalidIdGetSuiteName" (0 ms, 0.003 s in total).
-    [ RUN      ]	test "InvalidIdSetSuiteName" (50%)
-    [       OK ]	test "InvalidIdSetSuiteName" (0 ms, 0.005 s in total).
-    [ RUN      ]	test "CheckSuiteName" (62%)
-    [       OK ]	test "CheckSuiteName" (0 ms, 0.007 s in total).
-    [ RUN      ]	test "ChangeSuiteName" (75%)
-    [       OK ]	test "ChangeSuiteName" (0 ms, 0.009 s in total).
-    [ RUN      ]	test "ChangeSuiteName_BufferTest" (87%)
-    [       OK ]	test "ChangeSuiteName_BufferTest" (0 ms, 0.010 s in total).
-    [ RUN      ]	test "DestroySuite" (100%)
-    [       OK ]	test "DestroySuite" (0 ms, 0.012 s in total).
-    [----------]	the test environment was successfully torn down.
-    [==========]	test suite "Test suite API test" (#0) finished, 8 test(s) ran.
-    [  PASSED  ]	8 test(s).
-    [==========]	testing stopped.
+    [==========]    running test suite "Test suite API test" w/ 8 test case(s)...
+    [----------]    the test environment was successfully set up.
+    [ RUN      ]    test "CreateSuite" (12%)
+    [       OK ]    test "CreateSuite" (0 ms, 0.001 s in total).
+    [ RUN      ]    test "InvalidIdDestroySuite" (25%)
+    [       OK ]    test "InvalidIdDestroySuite" (0 ms, 0.002 s in total).
+    [ RUN      ]    test "InvalidIdGetSuiteName" (37%)
+    [       OK ]    test "InvalidIdGetSuiteName" (0 ms, 0.003 s in total).
+    [ RUN      ]    test "InvalidIdSetSuiteName" (50%)
+    [       OK ]    test "InvalidIdSetSuiteName" (0 ms, 0.005 s in total).
+    [ RUN      ]    test "CheckSuiteName" (62%)
+    [       OK ]    test "CheckSuiteName" (0 ms, 0.007 s in total).
+    [ RUN      ]    test "ChangeSuiteName" (75%)
+    [       OK ]    test "ChangeSuiteName" (0 ms, 0.009 s in total).
+    [ RUN      ]    test "ChangeSuiteName_BufferTest" (87%)
+    [       OK ]    test "ChangeSuiteName_BufferTest" (0 ms, 0.010 s in total).
+    [ RUN      ]    test "DestroySuite" (100%)
+    [       OK ]    test "DestroySuite" (0 ms, 0.012 s in total).
+    [----------]    the test environment was successfully torn down.
+    [==========]    test suite "Test suite API test" (#0) finished, 8 test(s) ran.
+    [  PASSED  ]    8 test(s).
+    [==========]    testing stopped.

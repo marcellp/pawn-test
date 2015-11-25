@@ -54,7 +54,7 @@ stock _PawnTest_ClearSuite(suiteid)
 */
 stock _PawnTest_CheckSuiteBounds(suiteid)
 {
-    if( suiteid > PAWNTEST_MAX_CASES || suiteid < 0 ) {
+    if( suiteid >= PAWNTEST_MAX_CASES || suiteid < 0 ) {
         PawnTest_errno = PAWNTEST_SUITE_OUT_OF_BOUNDS;
         return false;
     }
