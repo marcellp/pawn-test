@@ -17,7 +17,7 @@ License
 -------
 
 pawn-test is an open source project covered by the MIT License. See
-[LICENSE](COPYING) for more information or visit
+[LICENSE](LICENSE) for more information or visit
  http://opensource.org/licenses/MIT.
 
 Including pawn-test
