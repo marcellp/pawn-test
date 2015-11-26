@@ -96,7 +96,7 @@ stock PawnTest_Assert(condition, message[], return_if_false = PAWNTEST_CASE_FAIL
 */
 stock bool:PawnTest_AssertEx(condition, message[])
 {    
-    return PawnTest_Assert(condition, message[], false, true);
+    return !!(PawnTest_Assert(condition, message, false, true));
 }
 
 #define PAWNTEST_MAKE_FAIL(%1,%2) PawnTest_MakeReturnWith(%1 ,%2, )
