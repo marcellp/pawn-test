@@ -31,13 +31,8 @@ your project:
 
     #include <pawn_test/pawn_test>
   
-If you want to provide your own configuration, either edit the configuration file
-(`config.inc`) globally or define your custom configuration options after including
-the bootstrapper:
-
-    #include <pawn_test/pawn_test>
-    #define PAWNTEST_MAX_SUITES 10
-    #define PAWNTEST_MAX_CASES 50
+If you want to provide your own configuration, edit the configuration file
+(`config.inc`) and change your settings there.
 
 Using pawn-test
 ---------------
