@@ -99,7 +99,8 @@ stock bool:PawnTest_AssertEx(condition, message[])
     return !!(PawnTest_Assert(condition, message, false, true));
 }
 
-#define PAWNTEST_MAKE_FAIL(%1,%2) PawnTest_MakeReturnWith(%1 ,%2, )
+#define PAWNTEST_MAKE_FAIL(%1,%2) PawnTest_MakeReturnWith(%1 ,%2, PAWNTEST_CASE_FAILED)
+#define PAWNTEST_SKIP(%1,%2) PawnTest_MakeReturnWith(%1 ,%2, PAWNTEST_CASE_SKIPPED)
 
 /**
     <summary>

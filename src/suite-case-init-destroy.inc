@@ -25,6 +25,7 @@
 stock PawnTest_InitSuite(name[], size=sizeof(name))
 {
     _PawnTest_dummy(PawnTest_errno);    //get rid of the stupid "variable never used" warning
+    _PawnTest_dummy(PawnTest_testing);
     
     for( new i = 0; i<PAWNTEST_MAX_SUITES; i++ ) {
         if( !_PawnTest_Suites[i][PAWNTEST_INITIALIZED] ) {
