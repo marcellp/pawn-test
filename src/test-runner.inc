@@ -50,6 +50,8 @@ stock bool:PawnTest_Run(suiteid, fail_after = 0)
             _PawnTest_Suites[suiteid][PAWNTEST_SUITE_NAME]);
         return false;
     }
+
+    PawnTest_testing = true;
     
     printf("[==========]\trunning test suite \"%s\" w/ %d test case(s)...",
             _PawnTest_Suites[suiteid][PAWNTEST_SUITE_NAME],
@@ -68,12 +70,16 @@ stock bool:PawnTest_Run(suiteid, fail_after = 0)
                 printf("[  FAILED  ]\tthe test environment could not be set up.");
                 printf("[  FAILED  ]\tyou might have to clean up after yourself.");
                 printf("[==========]\ttesting stopped.");
+
+                PawnTest_testing = false;
                 return false;
             }
             default: {
                 printf("[  FAILED  ]\tthe setup function's return value isn't meaningful.");
                 printf("[  FAILED  ]\tyou might have to clean up after yourself.");
                 printf("[==========]\ttesting stopped.");
+
+                PawnTest_testing = false;
                 return false;            
             }
         }
@@ -194,12 +200,16 @@ stock bool:PawnTest_Run(suiteid, fail_after = 0)
                 printf("[----------]\tthe test environment could not be torn down.");
                 printf("[----------]\tyou might have to clean up after yourself.");
                 printf("[==========]\ttesting stopped.");
+
+                PawnTest_testing = false;
                 return false;
             }
             default: {
                 printf("[----------]\tthe setup function's return value isn't meaningful.");
                 printf("[----------]\tyou might have to clean up after yourself.");
                 printf("[==========]\ttesting stopped.");
+
+                PawnTest_testing = false;
                 return false;            
             }
         }
@@ -220,5 +230,6 @@ stock bool:PawnTest_Run(suiteid, fail_after = 0)
 
     printf("[==========]\ttesting stopped.\n");
     
+    PawnTest_testing = false;
     return ok;
 }

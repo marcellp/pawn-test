@@ -8,7 +8,7 @@
  * config.inc - the pawn-test configuration file
  *
  */
- 
+
 // This is the maximum # of test suites that can be stored in memory.
 #define PAWNTEST_MAX_SUITES 50
 

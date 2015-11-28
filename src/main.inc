@@ -49,3 +49,4 @@ new _PawnTest_Suites[PAWNTEST_MAX_SUITES][_E_PAWNTEST_SUITES];
 new _PawnTest_Cases[PAWNTEST_MAX_SUITES][PAWNTEST_MAX_CASES][_E_PAWNTEST_CASES];
 
 new PawnTest_errno;
+new bool:PawnTest_testing;
