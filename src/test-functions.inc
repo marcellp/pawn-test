@@ -28,7 +28,7 @@
         if that difference is less than or equal to 2^-11.
     </summary>
 */
-#define PAWNTEST_ASSERT_AEQ(%1,%2,%3) PawnTest_AssertEx( floatabs(%1-%2) < floatpower(2,-11), %3 " (almost eq)" )
+#define PAWNTEST_ASSERT_AEQ(%1,%2,%3) PawnTest_AssertEx( floatabs(%1-%2) <= floatpower(2,-11), %3 " (almost eq)" )
 
 /**
     <summary>
@@ -37,7 +37,7 @@
         that difference is less than or equal to the delta value supplied by the user.
     </summary>
 */
-#define PAWNTEST_ASSERT_AEQ_D(%1,%2,%3,%4) PawnTest_AssertEx( floatabs(%1-%2) < %3, %4 " (almost eq, custom d)" )
+#define PAWNTEST_ASSERT_AEQ_D(%1,%2,%3,%4) PawnTest_AssertEx( floatabs(%1-%2) <= %3, %4 " (almost eq, custom d)" )
 
 /**
     <summary>
