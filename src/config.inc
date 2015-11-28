@@ -9,6 +9,9 @@
  *
  */
 
+// The current version of pawn-test
+#define PAWNTEST_VERSION "1.1"
+
 // This is the maximum # of test suites that can be stored in memory.
 #define PAWNTEST_MAX_SUITES 50
 
