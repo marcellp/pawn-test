@@ -18,9 +18,8 @@
         The ID of the test suite returned by PawnTest_InitSuite().
     </param>
 
-    <param name="bool:failfast = false">
-        If set to true, this function will stop the test run on
-        the first error.
+    <param name="fail_after = 0">
+        The test run will stop after this many failures.
     </param>    
    
     <returns>
