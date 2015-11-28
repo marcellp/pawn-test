@@ -27,7 +27,7 @@
         Returns true if the test suit passed, false otherwise.
     </returns>
 */
-stock bool:PawnTest_Run(suiteid, bool:failfast = false)
+stock bool:PawnTest_Run(suiteid, fail_after = 0)
 {
     new bool:ok = true;
     new bool:test_failed = false;
@@ -170,8 +170,9 @@ stock bool:PawnTest_Run(suiteid, bool:failfast = false)
         _PawnTest_Cases[suiteid][i][PAWNTEST_RETURN_WITH] = -1;
                 
         // If failfast is enabled, stop testing.
-        if( failfast && test_failed ) {
-            printf("[----------]\tfailfast is enabled, test run halted.");
+        if( fail_after > 0 && failed >= fail_after  ) {
+            printf( "[----------]\ttest run halted due to %i failure(s).",
+                    fail_after);
             break;
         }
         
