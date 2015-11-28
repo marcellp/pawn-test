@@ -183,7 +183,7 @@ stock bool:PawnTest_Run(suiteid, fail_after = 0)
         
         // If PawnTest_Stop was called, stop testing.
         if( _PawnTest_Suites[suiteid][PAWNTEST_STOP] ) {
-            printf("[----------]\ttest run halted by test suite.");
+            printf("[----------]\ttest run halted by API.");
             break;
         }
     }
