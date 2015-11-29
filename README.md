@@ -4,8 +4,8 @@ pawn-test
 pawn-test is a simple automated testing framework for PAWN code. The framework
 provides a number of functions for setting up and managing test suites and test
 cases. It was designed to be compatible with the PAWN compiler that comes
-with San Andreas: Multiplayer (Pawn 3.2.3664), but it should work with other
-PAWN projects as well.
+with San Andreas: Multiplayer (Pawn 3.2.3664), but with a bit of tinkering
+it should work with other PAWN projects as well.
 
 Even though there exists a working testing environment for SA:MP (that would be
 `y_testing`), it is part of the YSI library, which many scripters do not want
