@@ -93,10 +93,11 @@ public InvalidIdGetSuiteName(suiteid, caseid)
 public InvalidIdSetSuiteName(suiteid, caseid)
 {
     new bool:ok = true;
+    new name[10] = "foo";
     
-    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(-1), "Did not fail when suiteid = -1" );
-    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES), "Did not fail when suiteid = max" );
-    ok &= PawnTest_AssertEx( !PawnTest_DestroySuite(PAWNTEST_MAX_SUITES+1), "Did not fail when suiteid = max+1" );
+    ok &= PawnTest_AssertEx( !PawnTest_SetSuiteName(-1, name), "Did not fail when suiteid = -1" );
+    ok &= PawnTest_AssertEx( !PawnTest_SetSuiteName(PAWNTEST_MAX_SUITES, name), "Did not fail when suiteid = max" );
+    ok &= PawnTest_AssertEx( !PawnTest_SetSuiteName(PAWNTEST_MAX_SUITES+1, name), "Did not fail when suiteid = max+1" );
 
     return (ok) ? PAWNTEST_CASE_PASSED : PAWNTEST_CASE_FAILED;
 }

@@ -96,7 +96,7 @@ stock PawnTest_GetSuiteName(suiteid, name[], size = sizeof(name))
     }
     
     memcpy( name, _PawnTest_Suites[suiteid][PAWNTEST_SUITE_NAME],
-            0, strlen(_PawnTest_Suites[suiteid][PAWNTEST_SUITE_NAME])*4, size);
+            0, strlen(_PawnTest_Suites[suiteid][PAWNTEST_SUITE_NAME])*4 + 1, size);
 
     return true;
 }
@@ -264,7 +264,7 @@ stock PawnTest_GetCaseName(suiteid, caseid, func_name[], size = sizeof(func_name
     }
     
     memcpy( name, _PawnTest_Cases[suiteid][caseid][PAWNTEST_CASE_NAME], 0,
-            strlen(_PawnTest_Cases[suiteid][caseid][PAWNTEST_CASE_NAME])*4, size);
+            strlen(_PawnTest_Cases[suiteid][caseid][PAWNTEST_CASE_NAME])*4 + 1, size);
     return;
 }
 
